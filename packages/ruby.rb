@@ -1,8 +1,8 @@
 package :ruby do
   description 'Ruby Virtual Machine'
-  version '1.9.2'
-  patchlevel '290'
-  source "ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-#{version}-p#{patchlevel}.tar.gz"
+  version TayloredswVps::PackageVersions.ruby_version
+  patchlevel TayloredswVps::PackageVersions.ruby_patchlevel
+  source "ftp://ftp.ruby-lang.org/pub/ruby/#{TayloredswVps::PackageVersions.ruby_major_version}/ruby-#{version}-p#{patchlevel}.tar.gz"
   requires :ruby_dependencies
 
   verify do
@@ -17,7 +17,7 @@ end
 
 package :rubygems do
   description 'Ruby Gems Package Management System'
-  version '1.3.7'
+  version TayloredswVps::PackageVersions.rubygems_version
   source "http://production.cf.rubygems.org/rubygems/rubygems-#{version}.tgz" do
     custom_install 'ruby setup.rb'
   end
