@@ -1,20 +1,15 @@
 STACK_PATH = File.dirname(__FILE__)
 
-$:<< File.join(STACK_PATH, "lib")
-Dir.glob(File.join(STACK_PATH, "lib", "**", "*.rb")).each do |lib|
-  require lib
-end
+def slurp_and_require_dir(the_dir)
+  $:<< File.join(STACK_PATH, the_dir)
+  Dir.glob(File.join(STACK_PATH, the_dir, "**", "*.rb")).each do |lib|
+    require lib
+  end
+end  
 
-Dir.glob(File.join(STACK_PATH, "sprinkle", "**", "*.rb")).each do |lib|
-  require lib
-end
-
-Dir.glob(File.join(STACK_PATH, "packages", "*.rb")).each do |lib|
-  require lib
-end
-
-$:<< File.join(STACK_PATH, "sprinkle")
-$:<< File.join(STACK_PATH, "packages")
+slurp_and_require_dir "lib"
+slurp_and_require_dir "sprinkle"
+slurp_and_require_dir "packages"
 
 policy :tayloredsw_vps, :roles => :app do
   requires :build_essential
