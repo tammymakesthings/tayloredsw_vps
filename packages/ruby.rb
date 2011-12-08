@@ -3,16 +3,12 @@ package :ruby do
   version TayloredswVps::PackageVersions.ruby_version
   patchlevel TayloredswVps::PackageVersions.ruby_patchlevel
   source "ftp://ftp.ruby-lang.org/pub/ruby/#{TayloredswVps::PackageVersions.ruby_major_version}/ruby-#{version}-p#{patchlevel}.tar.gz"
+
   requires :ruby_dependencies
 
   verify do
     has_executable 'ruby'
   end
-end
-
-package :ruby_dependencies do
-  description 'Ruby Virtual Machine Build Dependencies'
-  apt %w(zlib1g-dev libssl-dev libreadline5-dev libncurses5-dev file)
 end
 
 package :rubygems do
