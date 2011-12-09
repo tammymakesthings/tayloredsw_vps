@@ -21,8 +21,8 @@ package :monit do
       script = File.open(MONIT_SCRIPT_PATH).read.gsub("'", "'\\\\''").gsub("\n", '\n')
 
       post :install,
-        "echo -e '#{script}' > /etc/default/monit",
-        "echo -e '#{config}' >/etc/monit/monitrc"
+        "echo '#{script}' > /etc/default/monit",
+        "echo '#{config}' >/etc/monit/monitrc"
         "monit"
     end
   end

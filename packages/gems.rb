@@ -2,15 +2,11 @@ package :gems do
   description 'Gems for Ruby'
 
   requires :gem_dependencies
-  gem TayloredswVps::Config.required_gems
+  TayloredswVps::Config.required_gems.each do |g|
+    gem g
+  end
 
   requires :ruby
-
-  verify do
-    TayloredswVps::Config.required_gems.each do |g|
-      ruby_can_load g
-    end
-  end
 end
 
 package :gem_dependencies do

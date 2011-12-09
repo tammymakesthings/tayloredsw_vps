@@ -21,9 +21,7 @@ policy :tayloredsw_vps, :roles => :app do
   
   requires :apache
   
-  if TayloredswVps::Config.require_php?
-    requires :php     # Enable if needed
-  end
+  requires :php     # Enable if needed
 
   requires :mysql
   requires :sqlite3

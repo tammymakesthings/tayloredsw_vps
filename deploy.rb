@@ -10,9 +10,12 @@
 # Then, run ./install to kick off the host provisioning.
 #############################################################################
 
+require 'readline'
+
 set :run_method, :run
 
-role :app,      '10.0.3.7'
+role :app, "10.0.3.8"
+
 set :user,      'root'
 set :password,  'password'
 
